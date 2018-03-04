@@ -1,0 +1,13 @@
+{
+    "compilerOptions": {
+        "target": "es6",
+        "module": "umd",
+        "noImplicitAny": true,
+        "declaration": true,
+        "outDir": "dist",
+        "baseUrl": "."
+    },
+    "include": [
+        "src/**/*"
+    ]
+}

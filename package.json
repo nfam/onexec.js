@@ -1,0 +1,66 @@
+{
+  "name": "onexec",
+  "version": "0.1.0",
+  "description": "One execution runs at a time regardless of multiple requesters",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nfam/onexec.js.git"
+  },
+  "author": "Ninh Pham <ninhpham@hotmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/nfam/onexec.js/issues"
+  },
+  "homepage": "https://github.com/nfam/onexec.js#readme",
+  "main": "dist/onexec.js",
+  "types": "dist/onexec.d.ts",
+  "files": [
+    "LICENSE",
+    "README.md",
+    "dist/onexec.js",
+    "dist/onexec.d.ts",
+    "dist/onexec.min.js",
+    "dist/onexec.min.js.map"
+  ],
+  "scripts": {
+    "tslint": "node_modules/.bin/tslint -c tslint.json -p tsconfig.json",
+    "build": "node_modules/.bin/tsc",
+    "minify": "node_modules/.bin/uglifyjs ./dist/onexec.js --comments --compress --source-map \"base='./dist'\"  -o ./dist/onexec.min.js",
+    "test": "node_modules/.bin/nyc npm run test-ts",
+    "test-ts": "node_modules/.bin/mocha -r ts-node/register ./test/*.test.ts",
+    "coverage": "node_modules/.bin/nyc report --reporter=html",
+    "codecov": "node_modules/.bin/nyc report --reporter=text-lcov > coverage.lcov && ./node_modules/.bin/codecov",
+    "coveralls": "node_modules/.bin/nyc report --reporter=text-lcov | ./node_modules/.bin/coveralls"
+  },
+  "nyc": {
+    "include": [
+      "src/**/*.ts"
+    ],
+    "exclude": [
+      "dist/*",
+      "test/*"
+    ],
+    "extension": [
+      ".ts"
+    ],
+    "require": [
+      "ts-node/register"
+    ],
+    "all": true
+  },
+  "devDependencies": {
+    "@types/chai": "^4.1.2",
+    "@types/mocha": "^2.2.48",
+    "chai": "^4.1.2",
+    "chai-as-promised": "^7.1.1",
+    "codecov": "^3.0.0",
+    "mocha": "^5.0.1",
+    "mocha-lcov-reporter": "^1.3.0",
+    "nyc": "^11.4.1",
+    "ts-node": "^5.0.1",
+    "tslint": "^5.9.1",
+    "tslint-eslint-rules": "^5.1.0",
+    "typescript": "^2.7.2",
+    "uglify-es": "^3.3.9"
+  }
+}
